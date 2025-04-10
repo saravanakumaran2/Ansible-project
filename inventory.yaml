@@ -1,0 +1,10 @@
+---
+- name: Print message on specified hosts
+  hosts:
+    - 35.183.71.140
+    - 3.99.149.152
+  gather_facts: false
+  tasks:
+    - name: Print Hello message
+      ansible.builtin.debug:
+        msg: "Hello Ansible World"
