@@ -20,13 +20,16 @@
     name: wordpress
     state: present
     login_user: root
-    login_password: yourpassword 
+    login_password: yourpassword  # <-- make sure this matches the password you set in MySQL
+    host: localhost
 
 - name: Create WordPress DB user
-  mysql_user:
-    name: wp_user
-    password: wp_pass
-    priv: 'wordpress.*:ALL'
+  community.mysql.mysql_user:
+    name: wpuser
+    password: wpuserpassword
+    priv: "wordpress.*:ALL"
     state: present
-    host: '%'
+    login_user: root
+    login_password: yourpassword  # <-- again, make sure this matches the root password
+    host: localhost
 
