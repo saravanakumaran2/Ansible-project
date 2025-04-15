@@ -1,4 +1,5 @@
-- name: Install Apache, PHP, and required packages
+---
+- name: Install Apache and PHP packages
   apt:
     name:
       - apache2
@@ -7,7 +8,7 @@
       - libapache2-mod-php
       - unzip
     state: present
-    update_cache: true
+    update_cache: yes
 
 - name: Download WordPress
   get_url:
@@ -20,21 +21,23 @@
     dest: /var/www/
     remote_src: yes
 
-- name: Copy wp-config.php
-  template:
-    src: wp-config.php.j2
-    dest: /var/www/wordpress/wp-config.php
-    mode: '0644'
-
-- name: Set proper permissions
+- name: Set correct permissions for WordPress folder
   file:
-    path: /var/www//wordpress
+    path: /var/www/wordpress
+    state: directory
     recurse: yes
     owner: www-data
     group: www-data
+    mode: '0755'
 
-- name: Restart Apache
+- name: Set Apache to serve WordPress site
+  lineinfile:
+    path: /etc/apache2/sites-available/000-default.conf
+    regexp: '^DocumentRoot'
+    line: 'DocumentRoot /var/www/wordpress'
+    backup: yes
+
+- name: Restart Apache to apply changes
   service:
     name: apache2
     state: restarted
-
