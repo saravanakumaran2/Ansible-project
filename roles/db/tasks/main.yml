@@ -10,6 +10,11 @@
     state: started
     enabled: true
 
+- name: Install Python package for MySQL (PyMySQL)
+  ansible.builtin.package:
+    name: python3-pymysql
+    state: present
+
 - name: Create WordPress database
   mysql_db:
     name: wordpress
