@@ -1,7 +1,8 @@
----
 - name: Setup WordPress Website
   hosts: db
   become: true
+  collections:
+    - community.mysql
   roles:
     - db
 
@@ -10,4 +11,3 @@
   become: true
   roles:
     - web
-
