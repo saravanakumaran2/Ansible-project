@@ -21,6 +21,14 @@
     dest: /var/www/
     remote_src: yes
 
+- name: Copy wp-config.php
+  template:
+    src: wp-config.php.j2
+    dest: /var/www/wordpress/wp-config.php
+    owner: www-data
+    group: www-data
+    mode: '0644'
+
 - name: Set correct permissions for WordPress folder
   file:
     path: /var/www/wordpress
