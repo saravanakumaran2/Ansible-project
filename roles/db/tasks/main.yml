@@ -16,9 +16,11 @@
     state: present
 
 - name: Create WordPress database
-  mysql_db:
+  community.mysql.mysql_db:
     name: wordpress
     state: present
+    login_user: root
+    login_password: yourpassword 
 
 - name: Create WordPress DB user
   mysql_user:
