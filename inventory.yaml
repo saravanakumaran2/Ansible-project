@@ -1,9 +1,8 @@
 ---
 - name: Print message on specified hosts
   hosts:
-    - 35.183.71.140
-    - 3.99.149.152
-  gather_facts: false
+    - 3.98.122.210
+    - 15.156.83.23
   tasks:
     - name: Print Hello message
       ansible.builtin.debug:
