@@ -21,7 +21,7 @@
     state: present
     login_user: root
     login_password: yourpassword  # <-- make sure this matches the password you set in MySQL
-    host: localhost
+    login_host: localhost
 
 - name: Create WordPress DB user
   community.mysql.mysql_user:
@@ -31,5 +31,5 @@
     state: present
     login_user: root
     login_password: yourpassword  # <-- again, make sure this matches the root password
-    host: localhost
+    login_host: localhost
 
