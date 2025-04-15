@@ -18,20 +18,20 @@
 - name: Unzip WordPress
   unarchive:
     src: /tmp/wordpress.zip
-    dest: /var/www/
+    dest: /var/www/html
     remote_src: yes
 
 - name: Copy wp-config.php
   template:
     src: wp-config.php.j2
-    dest: /var/www/wordpress/wp-config.php
+    dest: /var/www/html/wordpress/wp-config.php
     owner: www-data
     group: www-data
     mode: '0644'
 
 - name: Set correct permissions for WordPress folder
   file:
-    path: /var/www/wordpress
+    path: /var/www/html/wordpress
     state: directory
     recurse: yes
     owner: www-data
@@ -42,7 +42,7 @@
   lineinfile:
     path: /etc/apache2/sites-available/000-default.conf
     regexp: '^DocumentRoot'
-    line: 'DocumentRoot /var/www/wordpress'
+    line: 'DocumentRoot /var/www/html/wordpress'
     backup: yes
 
 - name: Restart Apache to apply changes
