@@ -17,18 +17,18 @@
 - name: Unzip WordPress
   unarchive:
     src: /tmp/wordpress.zip
-    dest: /var/www/html/
+    dest: /var/www/
     remote_src: yes
 
 - name: Copy wp-config.php
   template:
     src: wp-config.php.j2
-    dest: /var/www/html/wordpress/wp-config.php
+    dest: /var/www/wordpress/wp-config.php
     mode: '0644'
 
 - name: Set proper permissions
   file:
-    path: /var/www/html/wordpress
+    path: /var/www//wordpress
     recurse: yes
     owner: www-data
     group: www-data
