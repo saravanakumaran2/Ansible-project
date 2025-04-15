@@ -1,9 +1,0 @@
----
-- name: Print message on specified hosts
-  hosts:
-    - 3.98.122.210
-    - 15.156.83.23
-  tasks:
-    - name: Print Hello message
-      ansible.builtin.debug:
-        msg: "Hello Ansible World"

@@ -1,0 +1,40 @@
+- name: Install MySQL
+  apt:
+    name: mariadb-server
+    state: present
+  become: yes
+
+- name: Start and enable MySQL
+  service:
+    name: mariadb
+    state: started
+    enabled: true
+  become: yes
+
+- name: Create WordPress Database
+  mysql_db:
+    name: wordpress
+    state: present
+  become: yes
+
+- name: Create WordPress DB User
+  mysql_user:
+    name: wp_user
+    password: wp_pass
+    priv: 'wordpress.*:ALL'
+    host: '%'
+    state: present
+  become: yes
+
+- name: Allow remote DB access
+  lineinfile:
+    path: /etc/mysql/mariadb.conf.d/50-server.cnf
+    regexp: '^bind-address'
+    line: 'bind-address = 0.0.0.0'
+  become: yes
+
+- name: Restart MySQL
+  service:
+    name: mariadb
+    state: restarted
+  become: yes
