@@ -20,7 +20,7 @@
     name: wordpress
     state: present
     login_user: root
-    login_password: yourpassword  # <-- make sure this matches the password you set in MySQL
+    login_password: wp_pass  
     login_host: localhost
     encoding: utf8
 
@@ -31,6 +31,6 @@
     priv: "wordpress.*:ALL"
     state: present
     login_user: root
-    login_password: yourpassword  # <-- again, make sure this matches the root password
+    login_password: wp_pass
     login_host: localhost
 
