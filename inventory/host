@@ -1,10 +1,7 @@
 [web]
-web_host ansible_host=3.98.122.210
+web_host ansible_host=3.98.122.210 root=ubuntu
 
 [db]
-db_host ansible_host=15.156.83.23
+db_host ansible_host=15.156.83.23 root=ubuntu
 
-[all:vars]
-ansible_user=root
-ansible_ssh_private_key_file=/home/saravana/.ssh/id_rsa
 

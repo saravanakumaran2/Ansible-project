@@ -1,8 +1,13 @@
 ---
-- hosts: db
+- name: Setup WordPress Website
+  hosts: db
+  become: true
   roles:
     - db
 
-- hosts: web
+- name: Setup Web Server with WordPress
+  hosts: web
+  become: true
   roles:
     - web
+

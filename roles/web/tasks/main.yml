@@ -1,46 +1,40 @@
-- name: Install packages
+- name: Install Apache, PHP, and required packages
   apt:
-    name: "{{ item }}"
+    name:
+      - apache2
+      - php
+      - php-mysql
+      - libapache2-mod-php
+      - unzip
     state: present
-  loop:
-    - apache2
-    - php
-    - php-mysql
-    - libapache2-mod-php
-    - wget
-    - unzip
-  become: yes
+    update_cache: true
 
 - name: Download WordPress
   get_url:
     url: https://wordpress.org/latest.zip
     dest: /tmp/wordpress.zip
-  become: yes
 
 - name: Unzip WordPress
   unarchive:
     src: /tmp/wordpress.zip
     dest: /var/www/html/
     remote_src: yes
-  become: yes
 
-- name: Set permissions
-  file:
-    path: /var/www/html/wordpress
-    owner: www-data
-    group: www-data
-    state: directory
-    recurse: yes
-  become: yes
-
-- name: Configure WordPress
+- name: Copy wp-config.php
   template:
     src: wp-config.php.j2
     dest: /var/www/html/wordpress/wp-config.php
-  become: yes
+    mode: '0644'
+
+- name: Set proper permissions
+  file:
+    path: /var/www/html/wordpress
+    recurse: yes
+    owner: www-data
+    group: www-data
 
 - name: Restart Apache
   service:
     name: apache2
     state: restarted
-  become: yes
+
