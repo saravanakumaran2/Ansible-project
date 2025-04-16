@@ -30,6 +30,8 @@ This repo is part of my project where I used **Ansible AWX** to fully automate a
 
 After the playbook runs, **you still need to manually log in to the DB server** and do the following once:
 
+### Use : Sudo mysql -u root -p
+
 ```sql
 CREATE USER 'wp_user'@'%' IDENTIFIED BY 'wp_pass';
 GRANT ALL PRIVILEGES ON wordpress.* TO 'wp_user'@'%';
