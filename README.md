@@ -45,7 +45,7 @@ FLUSH PRIVILEGES;
 2. Set up an Inventory with `db` and `web` groups
 3. Add your SSH Credentials
 4. Launch a Job Template using `playbook.yml`
-5. Then manually run the SQL commands above 👆
+5. Then manually run the SQL commands above 
 
 ## About This Repo
 
