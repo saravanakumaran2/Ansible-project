@@ -1,4 +1,4 @@
-# Ansible-AWX WordPress Setup 
+# Ansible AWX WordPress Setup 
 
 This repo is part of my project where I used **Ansible AWX** to fully automate a WordPress setup using two different servers — one for the **database** and another for the **web server**.
 
