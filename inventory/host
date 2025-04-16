@@ -1,7 +1,7 @@
 [web]
-web_host ansible_host=3.99.141.39 root=ubuntu
+web_host ansible_host=3.99.182.253 root=ubuntu
 
 [db]
-db_host ansible_host=35.183.34.226 root=ubuntu
+db_host ansible_host=35.182.252.66 root=ubuntu
 
 
