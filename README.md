@@ -1,6 +1,6 @@
-# Ansible AWX WordPress Setup 
+# Ansible WordPress Setup 
 
-This repo is part of my project where I used **Ansible AWX** to fully automate a WordPress setup using two different servers — one for the **database** and another for the **web server**.
+This repo is part of my project where I used **Ansible** to fully automate a WordPress setup using two different servers — one for the **database** and another for the **web server**.
 
 ---
 
@@ -22,7 +22,7 @@ This repo is part of my project where I used **Ansible AWX** to fully automate a
   - `group_vars/db.yml` contains MySQL info
   - `group_vars/web.yml` connects WordPress to DB
 
-- Connected the Git repo to **AWX**:
+- Connected the Git repo to **ANSIBLE**:
   - So that all playbooks run directly from this GitHub repo
 
 
@@ -30,7 +30,7 @@ This repo is part of my project where I used **Ansible AWX** to fully automate a
 
 After the playbook runs, **you still need to manually log in to the DB server** and do the following once:
 
-### Use : Sudo mysql -u root -p
+**Use : Sudo mysql -u root -p**
 
 ```sql
 CREATE USER 'wp_user'@'%' IDENTIFIED BY 'wp_pass';
@@ -41,18 +41,13 @@ FLUSH PRIVILEGES;
 - Without this step, you’ll see “Error establishing a database connection” in the browser.
 
 
-##  How to Run It in AWX
+##  How to Run It in Ansible
 
-1. Connect this Git repo in AWX (as a Project)
+1. Connect this Git repo in Ansible (as a Project)
 2. Set up an Inventory with `db` and `web` groups
 3. Add your SSH Credentials
 4. Launch a Job Template using `playbook.yml`
 5. Then manually run the SQL commands above 
 
-## About This Repo
 
-This is a personal and learning project for using:
-- AWX (Ansible Tower)
-- GitOps-style automation
-- Two-tier WordPress deployment
 
